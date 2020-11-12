@@ -1,0 +1,34 @@
+{
+  "services": [
+    {
+      "ID": "ServiceA",
+      "Name": "ServiceA",
+      "Tags": [
+        "ServiceAWebApi",
+        "Api"
+      ],
+      "Address": "127.0.0.1",
+      "Port": 8001,
+      "Check": {
+        "HTTP": "http://127.0.0.1:8001/ServiceA/Api/health",
+        "Interval": "10s"
+      }
+    },
+    {
+      "id": "ServiceB",
+      "name": "ServiceB",
+      "tags": [
+        "ServiceBWebApi",
+        "Api"
+      ],
+      "Address": "127.0.0.1",
+      "Port": 8001,
+      "Check": [
+        {
+          "HTTP": "http://127.0.0.1:8001/ServiceB/Api/health",
+          "Interval": "10s"
+        }
+      ]
+    }
+  ]
+}

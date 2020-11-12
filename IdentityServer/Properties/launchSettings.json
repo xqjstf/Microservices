@@ -1,0 +1,20 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://127.0.0.1:8001/IdentityServer",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "http://127.0.0.1:8001/IdentityServer",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

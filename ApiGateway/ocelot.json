@@ -1,0 +1,41 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/ServiceA/api/{everything}", //网关转发到下游格式
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/ServiceA/{everything}", //上游Api请求格式
+      "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ], //上下游支持请求方法
+      "ServiceName": "ServiceA", //consul 服务中 ServiceA 的名称
+      //负载均衡配置
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection" //将请求发往最空闲的那个服务器
+      },
+      //下游服务配置 http://localhost:38039/ServiceA/Health
+      "DownstreamHostAndPorts": [
+        {
+          //下游地址
+          "Host": "localhost",
+          //下游端口号
+          "Port": 8001
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/ServiceB/api/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/ServiceB/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ],
+      "ServiceName": "ServiceB", //consul 服务中 ServiceB 的名称
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": { // Consul 服务发现配置
+      "Host": "localhost", // Consul 地址
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

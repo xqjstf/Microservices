@@ -1,0 +1,7 @@
+1、输入命令：consul agent -dev -config-dir=./conf   运行consul  服务，如果找不到consul 命令，请确认当前文件夹中是否包含consul程序
+
+2、consul和Ocelot是2个单独的程序，Ocelot和ApiGateway项目一起启动
+  
+
+
+Consul服务地址：http://127.0.0.1:8500/ui/dc1/services
